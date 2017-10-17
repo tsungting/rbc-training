@@ -18,6 +18,10 @@ export class AppComponent {
     this.assetList = []
   }
 
+  toggleSold(index: number) {
+    this.assetList[index].isSold = !this.assetList[index].isSold;
+  }
+
   deleteItem(index: number) {
     this.assetList.splice(index, 1);
   }
