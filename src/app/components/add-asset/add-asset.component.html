@@ -1,6 +1,6 @@
 <!-- Create New -->
 <div class="flex items-center pa2 bg-blue hover-bg-light-blue">
   <app-asset-edit (onAssetChange)="assetAdded($event)"></app-asset-edit>
-  <button class="bg-green mh2" (click)="addAsset(assetName, assetValue)">Add</button>
+  <button class="bg-green mh2" (click)="onAddAssetClick()">Add</button>
   <button class="bg-red mh2" (click)="deleteAll()">Delete All</button>
 </div>

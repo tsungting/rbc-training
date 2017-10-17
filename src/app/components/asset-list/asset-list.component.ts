@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IAssetObject, AssetObject, IAssetSaveObject } from '../../../models/AssetObject';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-asset-list',
@@ -8,18 +9,28 @@ import { IAssetObject, AssetObject, IAssetSaveObject } from '../../../models/Ass
 })
 export class AssetListComponent implements OnInit {
   @Input() assetList: IAssetObject[];
+  assetListFromRedux: IAssetObject[];
   @Output() onAssetItemDeleted: EventEmitter<Number> = new EventEmitter<Number>();
   @Output() onAssetSoldToggle: EventEmitter<Number> = new EventEmitter<Number>();
   @Output() onAssetSave: EventEmitter<IAssetSaveObject> = new EventEmitter<IAssetSaveObject>();
   tempAsset: IAssetObject = new AssetObject();
 
-  constructor() { }
+  constructor(private store: Store<any>) {
+    this.store.select('assetList')
+      .subscribe((state) => {
+        this.assetListFromRedux = state;
+      });
+  }
 
   ngOnInit() {
   }
 
   onDeleteItemClick(index: number) {
-    this.onAssetItemDeleted.emit(index);
+    // this.onAssetItemDeleted.emit(index);
+    this.store.dispatch({
+      type: 'ON_ASSET_ITEM_DELETE',
+      payload: index
+    });
   }
 
   onToggleSoldClick(index: number) {

@@ -1,4 +1,4 @@
-<div class="flex items-center pa2" *ngFor="let assetItem of assetList; let i = index;">
+<div class="flex items-center pa2" *ngFor="let assetItem of assetListFromRedux; let i = index;">
   <!-- Text Values -->
   <div class="w-60 flex" *ngIf="!assetItem.isEdit" [ngClass]="assetItem.isSold ? 'strike' : null">
     <div class="flex-auto">Name</div>

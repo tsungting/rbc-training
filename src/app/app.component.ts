@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IAssetObject, AssetObject, IAssetSaveObject } from '../models/AssetObject';
 
+import { AddAssetComponent } from './components/add-asset/add-asset.component';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,14 +10,13 @@ import { IAssetObject, AssetObject, IAssetSaveObject } from '../models/AssetObje
 })
 export class AppComponent {
   assetList: IAssetObject[] = [];
-  tempAsset: IAssetObject;
 
   addAsset(asset: IAssetObject) {
     this.assetList.push(asset);
   }
 
   deleteAssetList() {
-    this.assetList = []
+    this.assetList = [];
   }
 
   toggleSold(index: number) {
@@ -27,7 +28,6 @@ export class AppComponent {
   }
 
   saveEdit(assetSaveObject: IAssetSaveObject) {
-
     this.assetList[assetSaveObject.index] = assetSaveObject.asset;
   }
 
