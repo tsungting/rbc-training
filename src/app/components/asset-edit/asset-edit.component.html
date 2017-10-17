@@ -1,0 +1,6 @@
+<div class="flex items-center pa2 bg-blue hover-bg-light-blue">
+  <label for="name">Name</label>
+  <input #assetName [value]="asset.name" name="name" class="mh3" type="text" (change)="onInputChange(assetName, assetValue)">
+  <label for="value">Value</label>
+  <input #assetValue [value]="asset.value" name="value" class="mh3" type="text" (change)="onInputChange(assetName, assetValue)">
+</div>
