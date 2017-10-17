@@ -1,42 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="f2">
-
-  <!-- Create New -->
-  <div class="flex items-center pa2 bg-blue hover-bg-light-blue">
-    <label for="name">Name</label>
-    <input #assetName name="name" class="mh3" type="text">
-    <label for="value">Value</label>
-    <input #assetValue name="value" class="mh3" type="text">
-    <button class="bg-green" (click)="addAsset(assetName, assetValue)">Add</button>
-  </div>
-
-  <!-- Delete ALL -->
-  <div class="flex justify-center items-center pa2">
-    <div class="ph3">{{assetList.length}}</div>
-    <button class="bg-red pa2" (click)="deleteAll()">Delete All</button>
-  </div>
-
-  <!-- List -->
-  <div class="flex items-center pa2" *ngFor="let assetItem of assetList; let i = index;">
-    <!-- Text Values -->
-    <div class="w-60 flex" *ngIf="!assetItem.isEdit" [ngClass]="assetItem.isSold ? 'strike' : null">
-      <div class="flex-auto">Name</div>
-      <div class="flex-auto">{{assetItem.name}}</div>
-      <div class="flex-auto">Value</div>
-      <div class="flex-auto">{{assetItem.value}}</div>
-    </div>
-    <!-- Is Edit Component -->
-    <app-asset-edit *ngIf="assetItem.isEdit" [asset]="assetItem" (onAssetChange)="onAssetEditChange($event, i)"></app-asset-edit>
-    <!-- Buttons -->
-    <div class="w-40 flex" *ngIf="!assetItem.isEdit">
-      <button class="flex-auto" (click)="deleteItem(i)">Delete</button>
-      <button class="flex-auto" (click)="toggleSold(i)">Toggle Sell</button>
-      <button class="flex-auto" (click)="editItem(i)">Edit</button>
-    </div>
-    <div class="w-40 flex" *ngIf="assetItem.isEdit">
-      <button class="flex-auto" (click)="cancelEdit(i)">Cancel</button>
-      <button class="flex-auto" (click)="saveEdit(i)" [disabled]="tempAsset === null">Save</button>
-    </div>
-  </div>
-
+  <!-- Add Asset -->
+  <app-add-asset (onAssetAdded)="addAsset($event)" (onAssetDeleted)="deleteAssetList()"></app-add-asset>
+  <!-- Asset List -->
+  <app-asset-list [assetList]="assetList" (onAssetItemDeleted)="deleteItem($event)" (onAssetSoldToggle)="toggleSold($event)"
+    (onAssetSave)="saveEdit($event)"></app-asset-list>
 </div>

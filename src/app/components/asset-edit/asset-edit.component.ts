@@ -4,10 +4,10 @@ import { AssetObject } from '../../../models/AssetObject';
 @Component({
   selector: 'app-asset-edit',
   templateUrl: './asset-edit.component.html',
-  styleUrls: ['./asset-edit.component.css']
+  styles: ['./asset-edit.component.css']
 })
 export class AssetEditComponent implements OnInit {
-  @Input() asset: AssetObject;
+  @Input() asset: AssetObject = new AssetObject();
   @Output() onAssetChange: EventEmitter<AssetObject> = new EventEmitter<AssetObject>();
 
   constructor() { }

@@ -4,11 +4,15 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AssetEditComponent } from './components/asset-edit/asset-edit.component';
+import { AddAssetComponent } from './components/add-asset/add-asset.component';
+import { AssetListComponent } from './components/asset-list/asset-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AssetEditComponent
+    AssetEditComponent,
+    AddAssetComponent,
+    AssetListComponent
   ],
   imports: [
     BrowserModule,

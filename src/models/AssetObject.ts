@@ -5,6 +5,11 @@ export interface IAssetObject {
     isEdit: boolean;
 }
 
+export interface IAssetSaveObject {
+    index: number,
+    asset: AssetObject
+}
+
 export class AssetObject implements IAssetObject {
     name: string;
     value: number;
